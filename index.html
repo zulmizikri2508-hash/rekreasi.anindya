@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyfun - Tempat Rekreasi Keluarga Impian</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins & Fredoka -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        joyYellow: '#FFC837',
+                        joyOrange: '#FF8008',
+                        joyPink: '#FF007F',
+                        joyBlue: '#00C9FF',
+                        joyGreen: '#92FE9D',
+                        joyPurple: '#8E2DE2'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Fredoka', cursive;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(255, 128, 8, 0.85) 0%, rgba(255, 0, 127, 0.85) 100%), url('https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-joyOrange to-joyPink rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg transform group-hover:rotate-12 transition-all">
+                        <i class="fa-solid font-bold fa-ticket"></i>
+                    </div>
+                    <span class="heading-font text-3xl font-bold bg-gradient-to-r from-joyOrange via-joyPink to-joyPurple bg-clip-text text-transparent">
+                        Joyfun
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-700">
+                    <a href="#beranda" class="hover:text-joyPink transition-colors">Beranda</a>
+                    <a href="#wahana" class="hover:text-joyPink transition-colors">Wahana</a>
+                    <a href="#keunikan" class="hover:text-joyPink transition-colors">Keunikan</a>
+                    <a href="#fasilitas" class="hover:text-joyPink transition-colors">Fasilitas</a>
+                    <a href="#promo" class="hover:text-joyPink transition-colors">Promo & Diskon</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#tiket" class="bg-gradient-to-r from-joyOrange to-joyPink text-white font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-joyOrange/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Beli Tiket
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-2xl text-slate-700 focus:outline-none p-2">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-4 shadow-xl">
+            <a href="#beranda" class="block font-medium text-slate-700 hover:text-joyPink">Beranda</a>
+            <a href="#wahana" class="block font-medium text-slate-700 hover:text-joyPink">Wahana</a>
+            <a href="#keunikan" class="block font-medium text-slate-700 hover:text-joyPink">Keunikan</a>
+            <a href="#fasilitas" class="block font-medium text-slate-700 hover:text-joyPink">Fasilitas</a>
+            <a href="#promo" class="block font-medium text-slate-700 hover:text-joyPink">Promo & Diskon</a>
+            <a href="#tiket" class="block text-center bg-gradient-to-r from-joyOrange to-joyPink text-white font-semibold px-6 py-3 rounded-xl shadow-md">Beli Tiket Sekarang</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-28 pb-20 md:pt-36 md:pb-32 hero-bg text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block bg-white/20 backdrop-blur-md text-white font-semibold text-sm md:text-base px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider border border-white/30 floating">
+                    ✨ Taman Rekreasi Favorit Keluarga
+                </span>
+                <h1 class="heading-font text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 tracking-wide drop-shadow-md">
+                    welcome to joyfun, friends!
+                </h1>
+                <p class="text-lg md:text-xl text-white/90 font-light mb-8 leading-relaxed">
+                    Rasakan sensasi petualangan tak terlupakan bersama keluarga dan teman-teman! Nikmati beragam wahana seru, pemandangan indah, dan pertunjukan Spektakuler setiap hari.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#tiket" class="bg-white text-joyPink hover:bg-slate-100 font-bold text-lg px-8 py-4 rounded-full shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-ticket text-xl"></i> Pesan Tiket Online
+                    </a>
+                    <a href="#wahana" class="bg-black/30 hover:bg-black/40 text-white font-semibold text-lg px-8 py-4 rounded-full border border-white/40 transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-compass"></i> Jelajahi Wahana
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Bottom Curve -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-12 md:h-20 text-slate-50" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.37,130.83,121.31,200,115.8,241.09,112.5,281.72,87.62,321.39,56.44Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section: Keunikan Joyfun -->
+    <section id="keunikan" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-joyPink font-bold uppercase tracking-wider text-sm">Mengapa Harus Joyfun?</span>
+                <h2 class="heading-font text-3xl md:text-5xl font-bold text-slate-800 mt-2">Keunikan Spesial Kami</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-joyOrange to-joyPink mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-3 text-slate-800">Alam & Edu-Tainment</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Pengalaman bermain interaktif di tengah kesejukan pemandangan alam asri yang dipadukan dengan zona edukasi flora dan fauna.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-3 text-slate-800">Night Light & Parade</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Pertunjukan ribuan lampu hias malam hari yang spektakuler serta parade karakter kostum harian yang meriah untuk kenangan indah.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-joyOrange to-joyYellow rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-3 text-slate-800">Ramah Semua Usia</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Rancangan wahana aman dan ramah keluarga, mulai dari balita, anak-anak, remaja, hingga wahana santai untuk lansia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Wahana Rekreasi -->
+    <section id="wahana" class="py-16 md:py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-joyOrange font-bold uppercase tracking-wider text-sm">Petualangan Seru</span>
+                <h2 class="heading-font text-3xl md:text-5xl font-bold text-slate-800 mt-2">Daftar Wahana Populer</h2>
+                <p class="text-slate-600 mt-3">Nikmati puluhan jenis pilihan hiburan pemacu adrenalin dan wahana santai.</p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-joyOrange to-joyPink mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <!-- Grid Wahana -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 1. Roller Coaster -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/FF8008/FFF?text=Roller+Coaster'" 
+                             alt="Roller Coaster" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-red-500 text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Adrenalin High</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Roller Coaster</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Rasakan sensasi meluncur cepat dan berputar 360 derajat di ketinggian ekstrem!</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-child-reaching text-joyOrange"></i> Min Tinggi: 120cm
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Ontang-Anting -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://images.unsplash.com/photo-1561483028-2027d1487232?auto=format&fit=crop&w=600&q=80'" 
+                             alt="Wahana Ontang-Anting Dufan Jakarta" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-joyBlue text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Favorit Dufan</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Ontang-Anting</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Ayunkan dirimu melayang di udara bagai terbang bebas dengan pemandangan dari atas ala Dufan Jakarta.</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-child-reaching text-joyBlue"></i> Min Tinggi: 100cm
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Waterboom -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/92FE9D/000?text=Waterboom'" 
+                             alt="Waterboom" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-cyan-500 text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Segar & Seru</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Waterboom</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Area seluncuran air raksasa, kolam ombak, dan ember tumpah yang menyenangkan.</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-vest text-cyan-500"></i> Baju Renang Wajib
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Rumah Hantu -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/8E2DE2/FFF?text=Rumah+Hantu'" 
+                             alt="Rumah Hantu" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-purple-700 text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Uji Nyali</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Rumah Hantu</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Uji keberanianmu menyusuri lorong gelap yang penuh dengan kejutan menegangkan.</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-ghost text-purple-600"></i> Semua Usia (Anak didampingi)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Kora-Kora -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/FF007F/FFF?text=Kora+Kora+Dufan'" 
+                             alt="Wahana Kora-Kora Dufan Jakarta" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-amber-500 text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Sensasional Dufan</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Kora-Kora</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Kapal ayun raksasa khas Dufan Jakarta yang mengayun tinggi hingga membuat jantung berdebar!</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-ship text-amber-500"></i> Min Tinggi: 110cm
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Flying Fox -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/00C9FF/FFF?text=Flying+Fox'" 
+                             alt="Flying Fox" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-emerald-600 text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Outbound</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Flying Fox</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Meluncur di atas tali lintasan sepanjang 300 meter menyeberangi danau indah.</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Perlengkapan Safety
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Area Makan -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col sm:col-span-2 lg:col-span-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x400/FF8008/FFF?text=Area+Makan'" 
+                             alt="Area Makan" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-joyOrange text-white font-bold text-xs px-3 py-1 rounded-full shadow-md">Kuliner Lengkap</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="heading-font text-xl font-bold text-slate-800 mb-2">Area Makan & Food Court</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Tempat istirahat yang luas menyajikan berbagai hidangan lezat nusantara dan internasional, camilan, minuman segar, serta kafe kekinian.</p>
+                        </div>
+                        <div class="flex items-center text-xs text-slate-500 gap-2 border-t pt-3">
+                            <i class="fa-solid fa-utensils text-joyOrange"></i> Puluhan Tenant Makanan
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Fasilitas -->
+    <section id="fasilitas" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-joyBlue font-bold uppercase tracking-wider text-sm">Kenyamanan Anda Utama</span>
+                <h2 class="heading-font text-3xl md:text-5xl font-bold text-slate-800 mt-2">Fasilitas Joyfun</h2>
+                <p class="text-slate-600 mt-3">Nikmati pengalaman liburan tanpa khawatir dengan fasilitas serba ada.</p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-joyBlue to-joyGreen mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Toilet Bersih -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/DDD/333?text=Toilet+Bersih'" 
+                         alt="Toilet Bersih" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-restroom text-joyBlue text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Toilet Bersih & Higienis</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Tersebar di seluruh area wahana, dibersihkan secara berkala demi kenyamanan pengunjung.</p>
+                    </div>
+                </div>
+
+                <!-- Musholla -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/92FE9D/000?text=Musholla'" 
+                         alt="Musholla" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-mosque text-emerald-600 text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Musholla Nyaman</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Tempat ibadah yang luas, bersih, ber-AC, dan dilengkapi sarana wudhu yang memadai.</p>
+                    </div>
+                </div>
+
+                <!-- Family Room -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/FF007F/FFF?text=Family+Room'" 
+                         alt="Family Room" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-baby text-joyPink text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Family & Nursery Room</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Ruang privat untuk ibu menyusui, ganti popok bayi, dan tempat istirahat keluarga.</p>
+                    </div>
+                </div>
+
+                <!-- Villa Penginapan -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/FF8008/FFF?text=Villa'" 
+                         alt="Villa" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-house-chimney text-joyOrange text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Villa Resort</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Penginapan villa eksklusif bagi keluarga yang ingin menikmati suasana malam di Joyfun.</p>
+                    </div>
+                </div>
+
+                <!-- Bumi Perkemahan -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/00C9FF/FFF?text=Camping+Ground'" 
+                         alt="Bumi Perkemahan" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-campground text-amber-700 text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Bumi Perkemahan</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Area camping ground luas terbuka untuk pengalaman berkemah di bawah bintang-bintang.</p>
+                    </div>
+                </div>
+
+                <!-- Saung Santai -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-slate-100 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/600x350/8E2DE2/FFF?text=Saung+Santai'" 
+                         alt="Saung Santai" class="h-44 w-full object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-chair text-emerald-500 text-xl"></i>
+                            <h3 class="heading-font text-xl font-bold text-slate-800">Saung Bersantai</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">Puluhan gazebos/saung gratis di tepi danau & taman hijau untuk berkumpul bersama.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Diskon & Promo + Panduan Pembelian -->
+    <section id="promo" class="py-16 md:py-24 bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-joyYellow font-bold uppercase tracking-wider text-sm">Hemat Banyak!</span>
+                <h2 class="heading-font text-3xl md:text-5xl font-bold mt-2">Promo & Kode Diskon</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-joyYellow to-joyOrange mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <!-- Card Promo -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <!-- Promo 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-joyYellow transition-all">
+                    <div class="bg-joyYellow/20 text-joyYellow rounded-xl p-3 w-fit mb-4 font-bold text-sm">
+                        Kode: <span class="font-mono text-base underline">JOYFUN20</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-2">Promo Family Pass</h3>
+                    <p class="text-white/80 text-sm mb-4">Diskon 20% khusus pembelian paket keluarga minimal 4 tiket terusan!</p>
+                    <span class="text-xs text-white/50">*Berlaku setiap hari</span>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-joyPink transition-all">
+                    <div class="bg-joyPink/20 text-joyPink rounded-xl p-3 w-fit mb-4 font-bold text-sm">
+                        Kode: <span class="font-mono text-base underline">HEBAT15</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-2">Promo Pelajar / Student</h3>
+                    <p class="text-white/80 text-sm mb-4">Potongan 15% untuk pelajar dan mahasiswa cukup dengan menunjukkan kartu identitas.</p>
+                    <span class="text-xs text-white/50">*Berlaku Senin - Jumat</span>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-joyBlue transition-all">
+                    <div class="bg-joyBlue/20 text-joyBlue rounded-xl p-3 w-fit mb-4 font-bold text-sm">
+                        Kode: <span class="font-mono text-base underline">EARLYBIRD</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold mb-2">Diskon Early Bird 10%</h3>
+                    <p class="text-white/80 text-sm mb-4">Pesan tiket minimal H-7 tanggal kedatangan dan dapatkan diskon 10% langsung.</p>
+                    <span class="text-xs text-white/50">*Semua kategori tiket</span>
+                </div>
+            </div>
+
+            <!-- Panduan Cara Pembelian Tiket -->
+            <div class="bg-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10">
+                <h3 class="heading-font text-2xl md:text-3xl font-bold text-center mb-8">Cara MUDAH Pembelian Tiket Online</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-joyOrange flex items-center justify-center font-bold text-2xl shadow-lg mb-4">1</div>
+                        <h4 class="font-bold text-lg mb-2">Pilih Tiket & Tanggal</h4>
+                        <p class="text-sm text-white/70">Tentukan jenis tiket, jumlah rombongan, dan tanggal kedatangan.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-joyPink flex items-center justify-center font-bold text-2xl shadow-lg mb-4">2</div>
+                        <h4 class="font-bold text-lg mb-2">Gunakan Kode Promo</h4>
+                        <p class="text-sm text-white/70">Masukkan kode promo aktif untuk mendapatkan potongan harga spesial.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-joyPurple flex items-center justify-center font-bold text-2xl shadow-lg mb-4">3</div>
+                        <h4 class="font-bold text-lg mb-2">Isi Data & Bayar</h4>
+                        <p class="text-sm text-white/70">Lengkapi data diri dan bayar via QRIS, E-Wallet, atau Transfer Bank.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-joyGreen text-slate-900 flex items-center justify-center font-bold text-2xl shadow-lg mb-4">4</div>
+                        <h4 class="font-bold text-lg mb-2">Terima E-Ticket</h4>
+                        <p class="text-sm text-white/70">E-ticket dengan QR Code instan dikirim via Email & WhatsApp Anda!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: SIMULASI PEMESANAN TIKET INTERAKTIF -->
+    <section id="tiket" class="py-16 md:py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 grid grid-cols-1 md:grid-cols-12">
+                
+                <!-- Left Info Box -->
+                <div class="md:col-span-5 bg-gradient-to-br from-joyOrange via-joyPink to-joyPurple p-8 text-white flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block bg-white/20 rounded-full px-3 py-1 text-xs font-semibold mb-4">Pesan Praktis</span>
+                        <h3 class="heading-font text-3xl font-bold mb-4">Form Tiket Joyfun</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6">Dapatkan kemudahan akses langsung tanpa antre di loket resmi. Cukup tunjukkan E-Ticket di pintu masuk.</p>
+                        
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-clock text-joyYellow text-lg"></i>
+                                <span>Jam Operasional: 08.00 - 22.00 WIB</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-shield-check text-joyGreen text-lg"></i>
+                                <span>Jaminan Transaksi Aman & Instan</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-headset text-joyBlue text-lg"></i>
+                                <span>Bantuan CS WhatsApp 24 Jam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-white/20 text-xs text-white/60">
+                        *Anak dengan tinggi di bawah 85cm GRATIS tiket masuk.
+                    </div>
+                </div>
+
+                <!-- Right Form Area -->
+                <div class="md:col-span-7 p-6 sm:p-10">
+                    <form id="ticketForm" onsubmit="handleFormSubmit(event)">
+                        
+                        <!-- Nama Lengkap -->
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Nama Pemesan</label>
+                            <input type="text" id="buyerName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm">
+                        </div>
+
+                        <!-- Email & No HP -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Email</label>
+                                <input type="email" id="buyerEmail" required placeholder="budi@email.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">No. WhatsApp</label>
+                                <input type="tel" id="buyerPhone" required placeholder="08123456789" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Jenis Tiket -->
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Kategori Tiket</label>
+                            <select id="ticketType" onchange="calculateTotal()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm font-medium bg-white">
+                                <option value="50000">Tiket Reguler Masuk (Rp 50.000 / orang)</option>
+                                <option value="120000" selected>Tiket Terusan Semua Wahana (Rp 120.000 / orang)</option>
+                                <option value="350000">Paket VIP Family Pass 4 Orang (Rp 350.000)</option>
+                            </select>
+                        </div>
+
+                        <!-- Tanggal & Jumlah -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Tanggal Kunjungan</label>
+                                <input type="date" id="visitDate" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Jumlah Tiket / Paket</label>
+                                <div class="flex items-center">
+                                    <button type="button" onclick="changeQty(-1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-3 rounded-l-xl">-</button>
+                                    <input type="number" id="ticketQty" value="1" min="1" max="50" readonly class="w-full text-center py-3 border-y border-slate-200 font-bold text-sm focus:outline-none">
+                                    <button type="button" onclick="changeQty(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-3 rounded-r-xl">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kode Promo -->
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Kode Promo Diskon</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="promoCode" placeholder="Masukkan JOYFUN20 / HEBAT15" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-joyPink text-sm uppercase">
+                                <button type="button" onclick="applyPromo()" class="bg-slate-800 text-white font-semibold px-4 py-2.5 rounded-xl hover:bg-slate-900 text-sm whitespace-nowrap">Gunakan</button>
+                            </div>
+                            <p id="promoMessage" class="text-xs mt-1 font-semibold hidden"></p>
+                        </div>
+
+                        <!-- Total Rincian -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-6 space-y-2">
+                            <div class="flex justify-between text-sm text-slate-600">
+                                <span>Subtotal</span>
+                                <span id="subtotalText">Rp 120.000</span>
+                            </div>
+                            <div class="flex justify-between text-sm text-emerald-600">
+                                <span>Diskon Promo</span>
+                                <span id="discountText">- Rp 0</span>
+                            </div>
+                            <hr class="border-slate-200">
+                            <div class="flex justify-between font-bold text-base text-slate-800">
+                                <span>Total Pembayaran</span>
+                                <span id="totalText" class="text-joyPink text-lg">Rp 120.000</span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-gradient-to-r from-joyOrange to-joyPink text-white font-bold py-4 rounded-xl shadow-lg shadow-joyOrange/30 hover:scale-[1.01] active:scale-95 transition-all text-base flex justify-center items-center gap-2">
+                            <i class="fa-solid fa-credit-card"></i> Bayar & Dapatkan E-Ticket
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-tr from-joyOrange to-joyPink rounded-xl flex items-center justify-center text-white text-xl">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <span class="heading-font text-2xl font-bold text-white">Joyfun</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Taman rekreasi keluarga nomor 1 dengan berbagai wahana seru, pemandangan indah, dan hiburan spektakuler.</p>
+                    <div class="flex gap-3 text-slate-400">
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-joyPink hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-joyPink hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-joyPink hover:text-white transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-joyPink hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="heading-font font-bold text-lg mb-4 text-white">Navigasi</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="#beranda" class="hover:text-joyPink transition-colors">Beranda</a></li>
+                        <li><a href="#wahana" class="hover:text-joyPink transition-colors">Daftar Wahana</a></li>
+                        <li><a href="#keunikan" class="hover:text-joyPink transition-colors">Keunikan Taman</a></li>
+                        <li><a href="#fasilitas" class="hover:text-joyPink transition-colors">Fasilitas Utama</a></li>
+                        <li><a href="#promo" class="hover:text-joyPink transition-colors">Promo Diskon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Wahana Populer -->
+                <div>
+                    <h4 class="heading-font font-bold text-lg mb-4 text-white">Wahana Favorit</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li>Roller Coaster Extreme</li>
+                        <li>Waterboom Splash Zone</li>
+                        <li>Kora-Kora Giant Ship</li>
+                        <li>Rumah Hantu Misteri</li>
+                        <li>Flying Fox Zipline</li>
+                    </ul>
+                </div>
+
+                <!-- Kontat -->
+                <div>
+                    <h4 class="heading-font font-bold text-lg mb-4 text-white">Kontak & Lokasi</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-joyPink mt-1"></i>
+                            <span>Jl. Wisata Joyfun No. 88, Puncak Rekreasi, Banten - Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-joyPink"></i>
+                            <span>info@joyfunpark.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-joyPink"></i>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-xs">
+                <p>&copy; 2026 Joyfun Rekreasi Indonesia. All rights reserved. Made with <i class="fa-solid fa-heart text-joyPink"></i> for happy families.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL E-TICKET SUCCESS -->
+    <div id="ticketModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 text-slate-800 relative shadow-2xl animate-bounce-short">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="heading-font text-2xl font-bold text-slate-800">Pembelian Berhasil!</h3>
+                <p class="text-xs text-slate-500">E-Ticket Joyfun telah dikirim ke WhatsApp & Email Anda.</p>
+            </div>
+
+            <!-- Struk E-Ticket -->
+            <div id="modalTicketContent" class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-5 mb-6 text-sm space-y-3">
+                <!-- Dynamic injected JS -->
+            </div>
+
+            <button onclick="closeModal()" class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition-colors">
+                Tutup & Simpan Tiket
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set Default Date to Today
+        document.getElementById('visitDate').valueAsDate = new Date();
+
+        // Responsive Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Ticket Price Calculation
+        let discountPercentage = 0;
+
+        function changeQty(delta) {
+            const qtyInput = document.getElementById('ticketQty');
+            let currentQty = parseInt(qtyInput.value) || 1;
+            currentQty += delta;
+            if (currentQty < 1) currentQty = 1;
+            if (currentQty > 50) currentQty = 50;
+            qtyInput.value = currentQty;
+            calculateTotal();
+        }
+
+        function applyPromo() {
+            const code = document.getElementById('promoCode').value.trim().toUpperCase();
+            const promoMsg = document.getElementById('promoMessage');
+
+            if (code === 'JOYFUN20') {
+                discountPercentage = 0.20;
+                promoMsg.textContent = '🎉 Promo JOYFUN20 Berhasil! Diskon 20% Diterapkan.';
+                promoMsg.className = 'text-xs mt-1 font-semibold text-emerald-600 block';
+            } else if (code === 'HEBAT15') {
+                discountPercentage = 0.15;
+                promoMsg.textContent = '🎉 Promo HEBAT15 Berhasil! Diskon 15% Diterapkan.';
+                promoMsg.className = 'text-xs mt-1 font-semibold text-emerald-600 block';
+            } else if (code === 'EARLYBIRD') {
+                discountPercentage = 0.10;
+                promoMsg.textContent = '🎉 Promo EARLYBIRD Berhasil! Diskon 10% Diterapkan.';
+                promoMsg.className = 'text-xs mt-1 font-semibold text-emerald-600 block';
+            } else if (code === '') {
+                discountPercentage = 0;
+                promoMsg.textContent = '';
+                promoMsg.className = 'text-xs mt-1 font-semibold hidden';
+            } else {
+                discountPercentage = 0;
+                promoMsg.textContent = '❌ Kode promo tidak valid atau telah kedaluwarsa.';
+                promoMsg.className = 'text-xs mt-1 font-semibold text-red-500 block';
+            }
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const price = parseInt(document.getElementById('ticketType').value);
+            const qty = parseInt(document.getElementById('ticketQty').value) || 1;
+
+            const subtotal = price * qty;
+            const discountAmount = subtotal * discountPercentage;
+            const total = subtotal - discountAmount;
+
+            document.getElementById('subtotalText').textContent = 'Rp ' + subtotal.toLocaleString('id-ID');
+            document.getElementById('discountText').textContent = '- Rp ' + discountAmount.toLocaleString('id-ID');
+            document.getElementById('totalText').textContent = 'Rp ' + total.toLocaleString('id-ID');
+
+            return { subtotal, discountAmount, total };
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('buyerName').value;
+            const email = document.getElementById('buyerEmail').value;
+            const phone = document.getElementById('buyerPhone').value;
+            const visitDate = document.getElementById('visitDate').value;
+            const qty = document.getElementById('ticketQty').value;
+            const ticketSelect = document.getElementById('ticketType');
+            const ticketName = ticketSelect.options[ticketSelect.selectedIndex].text.split('(')[0];
+
+            const totals = calculateTotal();
+            const ticketCode = 'JF-' + Math.floor(100000 + Math.random() * 900000);
+
+            // Populate Modal Content
+            const modalContent = document.getElementById('modalTicketContent');
+            modalContent.innerHTML = `
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span class="text-xs text-slate-400">Kode Booking</span>
+                    <span class="font-mono font-bold text-joyPink">${ticketCode}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Nama:</span>
+                    <span class="font-semibold text-slate-800">${name}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Kategori Tiket:</span>
+                    <span class="font-semibold text-slate-800 text-right">${ticketName}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Tgl Kunjungan:</span>
+                    <span class="font-semibold text-slate-800">${visitDate}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Jumlah:</span>
+                    <span class="font-semibold text-slate-800">${qty} Tiket</span>
+                </div>
+                <div class="flex justify-between pt-2 border-t font-bold">
+                    <span>Total Bayar:</span>
+                    <span class="text-emerald-600">Rp ${totals.total.toLocaleString('id-ID')}</span>
+                </div>
+                <!-- Mock QR Code -->
+                <div class="pt-3 text-center">
+                    <div class="bg-white p-2 border inline-block rounded-xl">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${ticketCode}" alt="QR Code E-Ticket" class="w-24 h-24 mx-auto">
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-1">Tunjukkan QR Code ini di gerbang masuk Joyfun</p>
+                </div>
+            `;
+
+            // Show Modal
+            document.getElementById('ticketModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('ticketModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
